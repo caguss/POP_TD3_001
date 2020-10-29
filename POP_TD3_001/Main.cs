@@ -66,6 +66,10 @@ namespace POP_TD3_001
 
 
         }
+
+      
+
+
         #endregion
 
 
@@ -139,12 +143,18 @@ namespace POP_TD3_001
         #region 4개버튼 이벤트
         private void btnmaterial_In_Click(object sender, EventArgs e)
         {
-            Checkcode();
+            if (Checkcode())
+            {
+                //실행
+            }
         }
 
         private void btnmaterial_Out_Click(object sender, EventArgs e)
         {
-
+            if (Checkcode())
+            {
+                //실행
+            }
         }
         
 
@@ -168,6 +178,10 @@ namespace POP_TD3_001
 
 
 
+
+        #endregion
+
+        #region 메세지 메소드
         private void Args_Showing(object sender, XtraMessageShowingArgs e)
         {
             e.Form.Appearance.FontStyleDelta = FontStyle.Bold;
@@ -186,8 +200,6 @@ namespace POP_TD3_001
 
         }
         #endregion
-      
-
 
     }
 }

@@ -33,7 +33,7 @@
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.machine_conn = new DevExpress.XtraLayout.SimpleLabelItem();
             this.machine_proc = new DevExpress.XtraLayout.SimpleLabelItem();
-            this.simpleLabelItem3 = new DevExpress.XtraLayout.SimpleLabelItem();
+            this.machine_amount = new DevExpress.XtraLayout.SimpleLabelItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.machine_name = new DevExpress.XtraLayout.SimpleLabelItem();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
@@ -42,7 +42,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.machine_conn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.machine_proc)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.simpleLabelItem3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.machine_amount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.machine_name)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
@@ -77,7 +77,7 @@
             this.btnIF.Name = "btnIF";
             this.btnIF.Size = new System.Drawing.Size(104, 58);
             this.btnIF.TabIndex = 0;
-            this.btnIF.Click += new System.EventHandler(this.ChangeConnection);
+            this.btnIF.Click += new System.EventHandler(this.btnIF_Click);
             // 
             // layoutControlGroup1
             // 
@@ -88,7 +88,7 @@
             this.layoutControlGroup1.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.machine_conn,
             this.machine_proc,
-            this.simpleLabelItem3,
+            this.machine_amount,
             this.layoutControlItem3,
             this.machine_name});
             this.layoutControlGroup1.Name = "Root";
@@ -142,27 +142,27 @@
             this.machine_proc.Text = "생산중";
             this.machine_proc.TextSize = new System.Drawing.Size(100, 37);
             // 
-            // simpleLabelItem3
+            // machine_amount
             // 
-            this.simpleLabelItem3.AllowHotTrack = false;
-            this.simpleLabelItem3.AppearanceItemCaption.BorderColor = System.Drawing.Color.Black;
-            this.simpleLabelItem3.AppearanceItemCaption.Font = new System.Drawing.Font("맑은 고딕", 20F, System.Drawing.FontStyle.Bold);
-            this.simpleLabelItem3.AppearanceItemCaption.FontStyleDelta = System.Drawing.FontStyle.Bold;
-            this.simpleLabelItem3.AppearanceItemCaption.Options.UseBorderColor = true;
-            this.simpleLabelItem3.AppearanceItemCaption.Options.UseFont = true;
-            this.simpleLabelItem3.AppearanceItemCaption.Options.UseTextOptions = true;
-            this.simpleLabelItem3.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.simpleLabelItem3.AppearanceItemCaption.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.simpleLabelItem3.Location = new System.Drawing.Point(737, 0);
-            this.simpleLabelItem3.MinSize = new System.Drawing.Size(98, 37);
-            this.simpleLabelItem3.Name = "simpleLabelItem3";
-            this.simpleLabelItem3.OptionsPrint.AppearanceItemCaption.BorderColor = System.Drawing.Color.Black;
-            this.simpleLabelItem3.OptionsPrint.AppearanceItemCaption.Options.UseBorderColor = true;
-            this.simpleLabelItem3.Padding = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0);
-            this.simpleLabelItem3.Size = new System.Drawing.Size(185, 90);
-            this.simpleLabelItem3.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
-            this.simpleLabelItem3.Text = "000";
-            this.simpleLabelItem3.TextSize = new System.Drawing.Size(100, 37);
+            this.machine_amount.AllowHotTrack = false;
+            this.machine_amount.AppearanceItemCaption.BorderColor = System.Drawing.Color.Black;
+            this.machine_amount.AppearanceItemCaption.Font = new System.Drawing.Font("맑은 고딕", 20F, System.Drawing.FontStyle.Bold);
+            this.machine_amount.AppearanceItemCaption.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            this.machine_amount.AppearanceItemCaption.Options.UseBorderColor = true;
+            this.machine_amount.AppearanceItemCaption.Options.UseFont = true;
+            this.machine_amount.AppearanceItemCaption.Options.UseTextOptions = true;
+            this.machine_amount.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.machine_amount.AppearanceItemCaption.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.machine_amount.Location = new System.Drawing.Point(737, 0);
+            this.machine_amount.MinSize = new System.Drawing.Size(98, 37);
+            this.machine_amount.Name = "machine_amount";
+            this.machine_amount.OptionsPrint.AppearanceItemCaption.BorderColor = System.Drawing.Color.Black;
+            this.machine_amount.OptionsPrint.AppearanceItemCaption.Options.UseBorderColor = true;
+            this.machine_amount.Padding = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0);
+            this.machine_amount.Size = new System.Drawing.Size(185, 90);
+            this.machine_amount.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
+            this.machine_amount.Text = "000";
+            this.machine_amount.TextSize = new System.Drawing.Size(100, 37);
             // 
             // layoutControlItem3
             // 
@@ -231,7 +231,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.machine_conn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.machine_proc)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.simpleLabelItem3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.machine_amount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.machine_name)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
@@ -247,7 +247,7 @@
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
         private DevExpress.XtraLayout.SimpleLabelItem machine_conn;
         private DevExpress.XtraLayout.SimpleLabelItem machine_proc;
-        private DevExpress.XtraLayout.SimpleLabelItem simpleLabelItem3;
+        private DevExpress.XtraLayout.SimpleLabelItem machine_amount;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
         private DevExpress.XtraLayout.SimpleLabelItem machine_name;
         private DevExpress.XtraLayout.LayoutControl layoutControl1;

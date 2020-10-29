@@ -16,50 +16,45 @@ namespace POP_TD3_001
         public ucMachineList()
         {
             InitializeComponent();
+            machine_Refresh();
         }
 
-        private void ChangeConnection(object sender, EventArgs e)
+        private void machine_Refresh()
         {
+            //DB로 값 불러오기
+            string equip_status = machine_proc.Text;
+            string conn_status = machine_conn.Text;
 
-            switch (machine_conn.Text)
+
+            switch (conn_status) // 연결상태
             {
-                case "On-Line":
-                    try
-                    {
-
-                        //db로 offline으로 변경 
-
-                        machine_conn.Text = "Off-Line";
-                        machine_conn.AppearanceItemCaption.ForeColor = Color.Crimson;
-
-                    }
-                    catch (Exception ex)
-                    {
-                        ShowErrorMessage(ex);
-                    }
-
+                case "Off-Line": // Off-Line
+                    machine_conn.Text = "Off-Line";
+                    machine_conn.AppearanceItemCaption.ForeColor = Color.Crimson;
                     break;
-
-                case "Off-Line":
-                    try
-                    {
-                        //db로 online으로 변경 
-
-
-                        machine_conn.Text = "On-Line";
-                        machine_conn.AppearanceItemCaption.ForeColor = Color.MediumBlue;
-                    }
-                    catch (Exception ex)
-                    {
-                        ShowErrorMessage(ex);
-                    }
-
+                case "On-Line":// On-Line
+                    machine_conn.Text = "On-Line";
+                    machine_conn.AppearanceItemCaption.ForeColor = Color.MediumBlue;
                     break;
             }
 
-
+            switch (equip_status) // 설비상태
+            {
+                case "생산중": // 생산중
+                    machine_proc.Text = "생산중";
+                    machine_proc.AppearanceItemCaption.ForeColor = Color.ForestGreen;
+                    break;
+                case "대기중":// 대기중
+                    machine_proc.Text = "대기중";
+                    machine_proc.AppearanceItemCaption.ForeColor = Color.LimeGreen;
+                    break;
+                case "Down":// down
+                    machine_proc.Text = "생산중";
+                    machine_proc.AppearanceItemCaption.ForeColor = Color.Red;
+                    break;
+            }
         }
-
+        #region 메세지 메소드
         private void ShowErrorMessage(Exception ex)
         {
             XtraMessageBoxArgs args = new XtraMessageBoxArgs();
@@ -85,6 +80,49 @@ namespace POP_TD3_001
                 btn.Height -= 200;
                 btn.Size = new Size(200, 100);
             }
+        }
+        #endregion
+
+
+        private void btnIF_Click(object sender, EventArgs e)
+        {
+            
+            switch (machine_conn.Text) // 연결상태
+            {
+                case "On-Line":
+                    try
+                    {
+                        //db로 업데이트
+                        machine_conn.Text = "Off-Line";
+                        machine_conn.AppearanceItemCaption.ForeColor = Color.Crimson;
+
+                    }
+                    catch (Exception ex)
+                    {
+                        ShowErrorMessage(ex);
+                    }
+
+                    break;
+
+                case "Off-Line":
+
+                    try
+                    {
+                        //db로 업데이트
+                        machine_conn.Text = "On-Line";
+                        machine_conn.AppearanceItemCaption.ForeColor = Color.MediumBlue;
+                    }
+                    catch (Exception ex)
+                    {
+                        ShowErrorMessage(ex);
+
+                    }
+
+                    break;
+            }
+
+
+            machine_Refresh();
         }
     }
 }
