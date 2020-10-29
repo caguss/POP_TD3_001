@@ -77,11 +77,12 @@
             this.popup_ok = new DevExpress.XtraEditors.SimpleButton();
             this.popup_edit = new DevExpress.XtraEditors.TextEdit();
             this.popup_label = new DevExpress.XtraEditors.LabelControl();
-            this.ucMacthineList7 = new POP_TD3_001.ucMacthineList();
-            this.ucMacthineList6 = new POP_TD3_001.ucMacthineList();
-            this.ucMacthineList5 = new POP_TD3_001.ucMacthineList();
-            this.ucMacthineList4 = new POP_TD3_001.ucMacthineList();
-            this.ucMacthineList3 = new POP_TD3_001.ucMacthineList();
+            this._barcodetext = new DevExpress.XtraEditors.TextEdit();
+            this.ucMachineList7 = new POP_TD3_001.ucMachineList();
+            this.ucMachineList6 = new POP_TD3_001.ucMachineList();
+            this.ucMachineList5 = new POP_TD3_001.ucMachineList();
+            this.ucMachineList4 = new POP_TD3_001.ucMachineList();
+            this.ucMachineList3 = new POP_TD3_001.ucMachineList();
             this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem9 = new DevExpress.XtraLayout.LayoutControlItem();
@@ -104,6 +105,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
             this.itemselectedpopup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.popup_edit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this._barcodetext.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).BeginInit();
@@ -122,8 +124,9 @@
             this.tileBar1.BackColor = System.Drawing.Color.GhostWhite;
             this.tileBar1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.tileBar1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tileBar1.DropDownButtonWidth = 50;
+            this.tileBar1.DropDownButtonWidth = 60;
             this.tileBar1.DropDownOptions.BeakColor = System.Drawing.Color.Empty;
+            this.tileBar1.EnableItemDoubleClickEvent = false;
             this.tileBar1.Groups.Add(this.tileBarGroup_order);
             this.tileBar1.Groups.Add(this.tileBarGroup_code);
             this.tileBar1.Groups.Add(this.tileBarGroup_amount);
@@ -131,7 +134,7 @@
             this.tileBar1.Groups.Add(this.tileBarGroup_worker);
             this.tileBar1.GroupTextToItemsIndent = 10;
             this.tileBar1.HorizontalContentAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.tileBar1.IndentBetweenGroups = 50;
+            this.tileBar1.IndentBetweenGroups = 28;
             this.tileBar1.IndentBetweenItems = 30;
             this.tileBar1.ItemPadding = new System.Windows.Forms.Padding(12, 10, 12, 10);
             this.tileBar1.ItemSize = 100;
@@ -140,10 +143,11 @@
             this.tileBar1.Name = "tileBar1";
             this.tileBar1.Padding = new System.Windows.Forms.Padding(22, 30, 22, 7);
             this.tileBar1.ScrollMode = DevExpress.XtraEditors.TileControlScrollMode.ScrollButtons;
+            this.tileBar1.ShowItemShadow = true;
             this.tileBar1.Size = new System.Drawing.Size(1264, 229);
             this.tileBar1.TabIndex = 99;
             this.tileBar1.Text = "tileBar1";
-            this.tileBar1.WideTileWidth = 200;
+            this.tileBar1.WideTileWidth = 220;
             // 
             // tileBarGroup_order
             // 
@@ -261,6 +265,7 @@
             // tileBar2
             // 
             this.tileBar2.AllowDrag = false;
+            this.tileBar2.BackColor = System.Drawing.Color.Lavender;
             this.tileBar2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tileBar2.DropDownButtonWidth = 50;
             this.tileBar2.DropDownOptions.BeakColor = System.Drawing.Color.Empty;
@@ -287,7 +292,11 @@
             // 
             // tilebar_cut
             // 
+            this.tilebar_cut.AppearanceItem.Normal.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.tilebar_cut.AppearanceItem.Normal.BorderColor = System.Drawing.Color.RoyalBlue;
             this.tilebar_cut.AppearanceItem.Normal.Font = new System.Drawing.Font("맑은 고딕", 24F);
+            this.tilebar_cut.AppearanceItem.Normal.Options.UseBackColor = true;
+            this.tilebar_cut.AppearanceItem.Normal.Options.UseBorderColor = true;
             this.tilebar_cut.AppearanceItem.Normal.Options.UseFont = true;
             this.tilebar_cut.AppearanceItem.Normal.Options.UseTextOptions = true;
             this.tilebar_cut.AppearanceItem.Normal.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
@@ -304,7 +313,11 @@
             // 
             // tileBar_bend
             // 
+            this.tileBar_bend.AppearanceItem.Normal.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.tileBar_bend.AppearanceItem.Normal.BorderColor = System.Drawing.Color.RoyalBlue;
             this.tileBar_bend.AppearanceItem.Normal.Font = new System.Drawing.Font("맑은 고딕", 24F);
+            this.tileBar_bend.AppearanceItem.Normal.Options.UseBackColor = true;
+            this.tileBar_bend.AppearanceItem.Normal.Options.UseBorderColor = true;
             this.tileBar_bend.AppearanceItem.Normal.Options.UseFont = true;
             this.tileBar_bend.AppearanceItem.Normal.Options.UseTextOptions = true;
             this.tileBar_bend.AppearanceItem.Normal.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
@@ -321,7 +334,11 @@
             // 
             // tileBar_welding
             // 
+            this.tileBar_welding.AppearanceItem.Normal.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.tileBar_welding.AppearanceItem.Normal.BorderColor = System.Drawing.Color.RoyalBlue;
             this.tileBar_welding.AppearanceItem.Normal.Font = new System.Drawing.Font("맑은 고딕", 24F);
+            this.tileBar_welding.AppearanceItem.Normal.Options.UseBackColor = true;
+            this.tileBar_welding.AppearanceItem.Normal.Options.UseBorderColor = true;
             this.tileBar_welding.AppearanceItem.Normal.Options.UseFont = true;
             this.tileBar_welding.AppearanceItem.Normal.Options.UseTextOptions = true;
             this.tileBar_welding.AppearanceItem.Normal.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
@@ -338,7 +355,11 @@
             // 
             // tileBar_put
             // 
+            this.tileBar_put.AppearanceItem.Normal.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.tileBar_put.AppearanceItem.Normal.BorderColor = System.Drawing.Color.RoyalBlue;
             this.tileBar_put.AppearanceItem.Normal.Font = new System.Drawing.Font("맑은 고딕", 24F);
+            this.tileBar_put.AppearanceItem.Normal.Options.UseBackColor = true;
+            this.tileBar_put.AppearanceItem.Normal.Options.UseBorderColor = true;
             this.tileBar_put.AppearanceItem.Normal.Options.UseFont = true;
             this.tileBar_put.AppearanceItem.Normal.Options.UseTextOptions = true;
             this.tileBar_put.AppearanceItem.Normal.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
@@ -355,7 +376,11 @@
             // 
             // tileBar_paint
             // 
+            this.tileBar_paint.AppearanceItem.Normal.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.tileBar_paint.AppearanceItem.Normal.BorderColor = System.Drawing.Color.RoyalBlue;
             this.tileBar_paint.AppearanceItem.Normal.Font = new System.Drawing.Font("맑은 고딕", 24F);
+            this.tileBar_paint.AppearanceItem.Normal.Options.UseBackColor = true;
+            this.tileBar_paint.AppearanceItem.Normal.Options.UseBorderColor = true;
             this.tileBar_paint.AppearanceItem.Normal.Options.UseFont = true;
             this.tileBar_paint.AppearanceItem.Normal.Options.UseTextOptions = true;
             this.tileBar_paint.AppearanceItem.Normal.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
@@ -397,11 +422,11 @@
             // 
             // layoutControl1
             // 
-            this.layoutControl1.Controls.Add(this.ucMacthineList7);
-            this.layoutControl1.Controls.Add(this.ucMacthineList6);
-            this.layoutControl1.Controls.Add(this.ucMacthineList5);
-            this.layoutControl1.Controls.Add(this.ucMacthineList4);
-            this.layoutControl1.Controls.Add(this.ucMacthineList3);
+            this.layoutControl1.Controls.Add(this.ucMachineList7);
+            this.layoutControl1.Controls.Add(this.ucMachineList6);
+            this.layoutControl1.Controls.Add(this.ucMachineList5);
+            this.layoutControl1.Controls.Add(this.ucMachineList4);
+            this.layoutControl1.Controls.Add(this.ucMachineList3);
             this.layoutControl1.Controls.Add(this.btnproduct_out);
             this.layoutControl1.Controls.Add(this.btnwork_Finish);
             this.layoutControl1.Controls.Add(this.btnmaterial_Out);
@@ -450,6 +475,7 @@
             this.btnmaterial_Out.StyleController = this.layoutControl1;
             this.btnmaterial_Out.TabIndex = 5;
             this.btnmaterial_Out.Text = "자재출고";
+            this.btnmaterial_Out.Click += new System.EventHandler(this.btnmaterial_Out_Click);
             // 
             // btnmaterial_In
             // 
@@ -462,6 +488,7 @@
             this.btnmaterial_In.StyleController = this.layoutControl1;
             this.btnmaterial_In.TabIndex = 4;
             this.btnmaterial_In.Text = "자재입고";
+            this.btnmaterial_In.Click += new System.EventHandler(this.btnmaterial_In_Click);
             // 
             // layoutControlGroup1
             // 
@@ -554,6 +581,7 @@
             this.simpleLabelItem1.MaxSize = new System.Drawing.Size(213, 97);
             this.simpleLabelItem1.MinSize = new System.Drawing.Size(213, 97);
             this.simpleLabelItem1.Name = "simpleLabelItem1";
+            this.simpleLabelItem1.Padding = new DevExpress.XtraLayout.Utils.Padding(1, 1, 1, 1);
             this.simpleLabelItem1.Size = new System.Drawing.Size(213, 97);
             this.simpleLabelItem1.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.simpleLabelItem1.Text = "항목";
@@ -575,6 +603,7 @@
             this.simpleLabelItem2.MaxSize = new System.Drawing.Size(114, 97);
             this.simpleLabelItem2.MinSize = new System.Drawing.Size(114, 97);
             this.simpleLabelItem2.Name = "simpleLabelItem2";
+            this.simpleLabelItem2.Padding = new DevExpress.XtraLayout.Utils.Padding(1, 1, 1, 1);
             this.simpleLabelItem2.Size = new System.Drawing.Size(114, 97);
             this.simpleLabelItem2.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.simpleLabelItem2.Text = "I/F";
@@ -596,6 +625,7 @@
             this.simpleLabelItem3.MaxSize = new System.Drawing.Size(225, 97);
             this.simpleLabelItem3.MinSize = new System.Drawing.Size(225, 97);
             this.simpleLabelItem3.Name = "simpleLabelItem3";
+            this.simpleLabelItem3.Padding = new DevExpress.XtraLayout.Utils.Padding(1, 1, 1, 1);
             this.simpleLabelItem3.Size = new System.Drawing.Size(225, 97);
             this.simpleLabelItem3.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.simpleLabelItem3.Text = "연결상태";
@@ -617,6 +647,7 @@
             this.simpleLabelItem4.MaxSize = new System.Drawing.Size(184, 97);
             this.simpleLabelItem4.MinSize = new System.Drawing.Size(184, 97);
             this.simpleLabelItem4.Name = "simpleLabelItem4";
+            this.simpleLabelItem4.Padding = new DevExpress.XtraLayout.Utils.Padding(1, 1, 1, 1);
             this.simpleLabelItem4.Size = new System.Drawing.Size(184, 97);
             this.simpleLabelItem4.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.simpleLabelItem4.Text = "설비상태";
@@ -638,6 +669,7 @@
             this.simpleLabelItem5.MaxSize = new System.Drawing.Size(184, 97);
             this.simpleLabelItem5.MinSize = new System.Drawing.Size(184, 97);
             this.simpleLabelItem5.Name = "simpleLabelItem5";
+            this.simpleLabelItem5.Padding = new DevExpress.XtraLayout.Utils.Padding(1, 1, 1, 1);
             this.simpleLabelItem5.Size = new System.Drawing.Size(184, 97);
             this.simpleLabelItem5.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.simpleLabelItem5.Text = "생산실적";
@@ -653,11 +685,11 @@
             // 
             // itemselectedpopup
             // 
-            this.itemselectedpopup.BackColor = System.Drawing.Color.White;
+            this.itemselectedpopup.BackColor = System.Drawing.Color.AliceBlue;
             this.itemselectedpopup.Controls.Add(this.popup_ok);
             this.itemselectedpopup.Controls.Add(this.popup_edit);
             this.itemselectedpopup.Controls.Add(this.popup_label);
-            this.itemselectedpopup.Location = new System.Drawing.Point(290, 192);
+            this.itemselectedpopup.Location = new System.Drawing.Point(327, 182);
             this.itemselectedpopup.Name = "itemselectedpopup";
             this.itemselectedpopup.Size = new System.Drawing.Size(654, 412);
             this.itemselectedpopup.TabIndex = 100;
@@ -686,6 +718,7 @@
             this.popup_edit.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
             this.popup_edit.Size = new System.Drawing.Size(322, 62);
             this.popup_edit.TabIndex = 1;
+            this.popup_edit.KeyDown += new System.Windows.Forms.KeyEventHandler(this.popup_edit_KeyDown);
             // 
             // popup_label
             // 
@@ -697,82 +730,99 @@
             this.popup_label.TabIndex = 0;
             this.popup_label.Text = "작업지시";
             // 
-            // ucMacthineList7
+            // _barcodetext
             // 
-            this.ucMacthineList7.Location = new System.Drawing.Point(12, 199);
-            this.ucMacthineList7.Name = "ucMacthineList7";
-            this.ucMacthineList7.Size = new System.Drawing.Size(916, 86);
-            this.ucMacthineList7.TabIndex = 14;
+            this._barcodetext.Location = new System.Drawing.Point(1152, 12);
+            this._barcodetext.Name = "_barcodetext";
+            this._barcodetext.Size = new System.Drawing.Size(100, 20);
+            this._barcodetext.TabIndex = 101;
             // 
-            // ucMacthineList6
+            // ucMachineList7
             // 
-            this.ucMacthineList6.Location = new System.Drawing.Point(12, 109);
-            this.ucMacthineList6.Name = "ucMacthineList6";
-            this.ucMacthineList6.Size = new System.Drawing.Size(916, 86);
-            this.ucMacthineList6.TabIndex = 13;
+            this.ucMachineList7.Location = new System.Drawing.Point(10, 197);
+            this.ucMachineList7.Margin = new System.Windows.Forms.Padding(0);
+            this.ucMachineList7.Name = "ucMachineList7";
+            this.ucMachineList7.Size = new System.Drawing.Size(920, 90);
+            this.ucMachineList7.TabIndex = 14;
             // 
-            // ucMacthineList5
+            // ucMachineList6
             // 
-            this.ucMacthineList5.Location = new System.Drawing.Point(12, 469);
-            this.ucMacthineList5.Name = "ucMacthineList5";
-            this.ucMacthineList5.Size = new System.Drawing.Size(916, 86);
-            this.ucMacthineList5.TabIndex = 12;
+            this.ucMachineList6.Location = new System.Drawing.Point(10, 107);
+            this.ucMachineList6.Margin = new System.Windows.Forms.Padding(0);
+            this.ucMachineList6.Name = "ucMachineList6";
+            this.ucMachineList6.Size = new System.Drawing.Size(920, 90);
+            this.ucMachineList6.TabIndex = 13;
             // 
-            // ucMacthineList4
+            // ucMachineList5
             // 
-            this.ucMacthineList4.Location = new System.Drawing.Point(12, 379);
-            this.ucMacthineList4.Name = "ucMacthineList4";
-            this.ucMacthineList4.Size = new System.Drawing.Size(916, 86);
-            this.ucMacthineList4.TabIndex = 11;
+            this.ucMachineList5.Location = new System.Drawing.Point(10, 467);
+            this.ucMachineList5.Margin = new System.Windows.Forms.Padding(0);
+            this.ucMachineList5.Name = "ucMachineList5";
+            this.ucMachineList5.Size = new System.Drawing.Size(920, 90);
+            this.ucMachineList5.TabIndex = 12;
             // 
-            // ucMacthineList3
+            // ucMachineList4
             // 
-            this.ucMacthineList3.Location = new System.Drawing.Point(12, 289);
-            this.ucMacthineList3.Name = "ucMacthineList3";
-            this.ucMacthineList3.Size = new System.Drawing.Size(916, 86);
-            this.ucMacthineList3.TabIndex = 10;
+            this.ucMachineList4.Location = new System.Drawing.Point(10, 377);
+            this.ucMachineList4.Margin = new System.Windows.Forms.Padding(0);
+            this.ucMachineList4.Name = "ucMachineList4";
+            this.ucMachineList4.Size = new System.Drawing.Size(920, 90);
+            this.ucMachineList4.TabIndex = 11;
+            // 
+            // ucMachineList3
+            // 
+            this.ucMachineList3.Location = new System.Drawing.Point(10, 287);
+            this.ucMachineList3.Margin = new System.Windows.Forms.Padding(0);
+            this.ucMachineList3.Name = "ucMachineList3";
+            this.ucMachineList3.Size = new System.Drawing.Size(920, 90);
+            this.ucMachineList3.TabIndex = 10;
             // 
             // layoutControlItem7
             // 
-            this.layoutControlItem7.Control = this.ucMacthineList3;
+            this.layoutControlItem7.Control = this.ucMachineList3;
             this.layoutControlItem7.Location = new System.Drawing.Point(0, 277);
             this.layoutControlItem7.Name = "layoutControlItem7";
+            this.layoutControlItem7.Padding = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0);
             this.layoutControlItem7.Size = new System.Drawing.Size(920, 90);
             this.layoutControlItem7.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem7.TextVisible = false;
             // 
             // layoutControlItem8
             // 
-            this.layoutControlItem8.Control = this.ucMacthineList4;
+            this.layoutControlItem8.Control = this.ucMachineList4;
             this.layoutControlItem8.Location = new System.Drawing.Point(0, 367);
             this.layoutControlItem8.Name = "layoutControlItem8";
+            this.layoutControlItem8.Padding = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0);
             this.layoutControlItem8.Size = new System.Drawing.Size(920, 90);
             this.layoutControlItem8.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem8.TextVisible = false;
             // 
             // layoutControlItem9
             // 
-            this.layoutControlItem9.Control = this.ucMacthineList5;
+            this.layoutControlItem9.Control = this.ucMachineList5;
             this.layoutControlItem9.Location = new System.Drawing.Point(0, 457);
             this.layoutControlItem9.Name = "layoutControlItem9";
+            this.layoutControlItem9.Padding = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0);
             this.layoutControlItem9.Size = new System.Drawing.Size(920, 90);
             this.layoutControlItem9.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem9.TextVisible = false;
             // 
             // layoutControlItem10
             // 
-            this.layoutControlItem10.Control = this.ucMacthineList6;
+            this.layoutControlItem10.Control = this.ucMachineList6;
             this.layoutControlItem10.Location = new System.Drawing.Point(0, 97);
             this.layoutControlItem10.Name = "layoutControlItem10";
+            this.layoutControlItem10.Padding = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0);
             this.layoutControlItem10.Size = new System.Drawing.Size(920, 90);
             this.layoutControlItem10.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem10.TextVisible = false;
             // 
             // layoutControlItem11
             // 
-            this.layoutControlItem11.Control = this.ucMacthineList7;
+            this.layoutControlItem11.Control = this.ucMachineList7;
             this.layoutControlItem11.Location = new System.Drawing.Point(0, 187);
             this.layoutControlItem11.Name = "layoutControlItem11";
+            this.layoutControlItem11.Padding = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0);
             this.layoutControlItem11.Size = new System.Drawing.Size(920, 90);
             this.layoutControlItem11.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem11.TextVisible = false;
@@ -782,6 +832,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1264, 796);
+            this.Controls.Add(this._barcodetext);
             this.Controls.Add(this.itemselectedpopup);
             this.Controls.Add(this.layoutControl1);
             this.Controls.Add(this.tileBar1);
@@ -790,6 +841,7 @@
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "POP";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.tileBarDropDownContainer1)).EndInit();
             this.tileBarDropDownContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
@@ -808,6 +860,7 @@
             this.itemselectedpopup.ResumeLayout(false);
             this.itemselectedpopup.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.popup_edit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this._barcodetext.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).EndInit();
@@ -858,16 +911,17 @@
         private DevExpress.XtraLayout.SimpleLabelItem simpleLabelItem3;
         private DevExpress.XtraLayout.SimpleLabelItem simpleLabelItem4;
         private DevExpress.XtraLayout.SimpleLabelItem simpleLabelItem5;
-        private ucMacthineList ucMacthineList5;
-        private ucMacthineList ucMacthineList4;
-        private ucMacthineList ucMacthineList3;
+        private ucMachineList ucMachineList5;
+        private ucMachineList ucMachineList4;
+        private ucMachineList ucMachineList3;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem7;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem8;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem9;
-        private ucMacthineList ucMacthineList7;
-        private ucMacthineList ucMacthineList6;
+        private ucMachineList ucMachineList7;
+        private ucMachineList ucMachineList6;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem10;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem11;
+        private DevExpress.XtraEditors.TextEdit _barcodetext;
     }
 }
 

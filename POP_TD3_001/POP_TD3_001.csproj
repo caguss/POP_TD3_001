@@ -63,11 +63,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ucMacthineList.cs">
+    <Compile Include="ucMachineList.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ucMacthineList.Designer.cs">
-      <DependentUpon>ucMacthineList.cs</DependentUpon>
+    <Compile Include="ucMachineList.Designer.cs">
+      <DependentUpon>ucMachineList.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
@@ -82,8 +82,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="ucMacthineList.resx">
-      <DependentUpon>ucMacthineList.cs</DependentUpon>
+    <EmbeddedResource Include="ucMachineList.resx">
+      <DependentUpon>ucMachineList.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
