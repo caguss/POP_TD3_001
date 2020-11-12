@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.btnIF = new DevExpress.XtraEditors.SimpleButton();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
@@ -37,6 +38,7 @@
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.machine_name = new DevExpress.XtraLayout.SimpleLabelItem();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
@@ -58,7 +60,8 @@
             this.panelControl1.Location = new System.Drawing.Point(213, 0);
             this.panelControl1.Margin = new System.Windows.Forms.Padding(0);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(114, 90);
+            this.panelControl1.Padding = new System.Windows.Forms.Padding(10, 15, 10, 15);
+            this.panelControl1.Size = new System.Drawing.Size(114, 100);
             this.panelControl1.TabIndex = 6;
             // 
             // btnIF
@@ -69,15 +72,14 @@
             this.btnIF.Appearance.BackColor = System.Drawing.Color.DarkGray;
             this.btnIF.Appearance.Options.UseBackColor = true;
             this.btnIF.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Style3D;
-            this.btnIF.Location = new System.Drawing.Point(5, 18);
+            this.btnIF.Location = new System.Drawing.Point(15, 33);
             this.btnIF.LookAndFeel.SkinMaskColor = System.Drawing.Color.Fuchsia;
             this.btnIF.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Style3D;
             this.btnIF.LookAndFeel.UseDefaultLookAndFeel = false;
             this.btnIF.Margin = new System.Windows.Forms.Padding(0);
             this.btnIF.Name = "btnIF";
-            this.btnIF.Size = new System.Drawing.Size(104, 58);
+            this.btnIF.Size = new System.Drawing.Size(84, 38);
             this.btnIF.TabIndex = 0;
-            this.btnIF.Click += new System.EventHandler(this.btnIF_Click);
             // 
             // layoutControlGroup1
             // 
@@ -97,7 +99,7 @@
             this.layoutControlGroup1.OptionsPrint.AppearanceItemCaption.BorderColor = System.Drawing.Color.Black;
             this.layoutControlGroup1.OptionsPrint.AppearanceItemCaption.Options.UseBorderColor = true;
             this.layoutControlGroup1.Padding = new DevExpress.XtraLayout.Utils.Padding(-1, -1, -1, -1);
-            this.layoutControlGroup1.Size = new System.Drawing.Size(922, 90);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(922, 100);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // machine_conn
@@ -117,7 +119,7 @@
             this.machine_conn.OptionsPrint.AppearanceItemCaption.BorderColor = System.Drawing.Color.Black;
             this.machine_conn.OptionsPrint.AppearanceItemCaption.Options.UseBorderColor = true;
             this.machine_conn.Padding = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0);
-            this.machine_conn.Size = new System.Drawing.Size(225, 90);
+            this.machine_conn.Size = new System.Drawing.Size(225, 100);
             this.machine_conn.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.machine_conn.Text = "On-Line";
             this.machine_conn.TextSize = new System.Drawing.Size(100, 37);
@@ -137,7 +139,7 @@
             this.machine_proc.OptionsPrint.AppearanceItemCaption.BorderColor = System.Drawing.Color.Black;
             this.machine_proc.OptionsPrint.AppearanceItemCaption.Options.UseBorderColor = true;
             this.machine_proc.Padding = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0);
-            this.machine_proc.Size = new System.Drawing.Size(185, 90);
+            this.machine_proc.Size = new System.Drawing.Size(185, 100);
             this.machine_proc.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.machine_proc.Text = "생산중";
             this.machine_proc.TextSize = new System.Drawing.Size(100, 37);
@@ -159,7 +161,7 @@
             this.machine_amount.OptionsPrint.AppearanceItemCaption.BorderColor = System.Drawing.Color.Black;
             this.machine_amount.OptionsPrint.AppearanceItemCaption.Options.UseBorderColor = true;
             this.machine_amount.Padding = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0);
-            this.machine_amount.Size = new System.Drawing.Size(185, 90);
+            this.machine_amount.Size = new System.Drawing.Size(185, 100);
             this.machine_amount.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.machine_amount.Text = "000";
             this.machine_amount.TextSize = new System.Drawing.Size(100, 37);
@@ -170,7 +172,7 @@
             this.layoutControlItem3.Location = new System.Drawing.Point(213, 0);
             this.layoutControlItem3.Name = "layoutControlItem3";
             this.layoutControlItem3.Padding = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0);
-            this.layoutControlItem3.Size = new System.Drawing.Size(114, 90);
+            this.layoutControlItem3.Size = new System.Drawing.Size(114, 100);
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
             // 
@@ -180,6 +182,7 @@
             this.machine_name.AppearanceItemCaption.BorderColor = System.Drawing.Color.Black;
             this.machine_name.AppearanceItemCaption.Font = new System.Drawing.Font("맑은 고딕", 20F, System.Drawing.FontStyle.Bold);
             this.machine_name.AppearanceItemCaption.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            this.machine_name.AppearanceItemCaption.Options.UseBackColor = true;
             this.machine_name.AppearanceItemCaption.Options.UseBorderColor = true;
             this.machine_name.AppearanceItemCaption.Options.UseFont = true;
             this.machine_name.AppearanceItemCaption.Options.UseTextOptions = true;
@@ -191,7 +194,7 @@
             this.machine_name.OptionsPrint.AppearanceItemCaption.BorderColor = System.Drawing.Color.Black;
             this.machine_name.OptionsPrint.AppearanceItemCaption.Options.UseBorderColor = true;
             this.machine_name.Padding = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0);
-            this.machine_name.Size = new System.Drawing.Size(213, 90);
+            this.machine_name.Size = new System.Drawing.Size(213, 100);
             this.machine_name.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.machine_name.Text = "절단기";
             this.machine_name.TextSize = new System.Drawing.Size(100, 37);
@@ -214,9 +217,14 @@
             this.layoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(584, 288, 650, 400);
             this.layoutControl1.OptionsView.DrawItemBorders = true;
             this.layoutControl1.Root = this.layoutControlGroup1;
-            this.layoutControl1.Size = new System.Drawing.Size(922, 90);
+            this.layoutControl1.Size = new System.Drawing.Size(922, 100);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 2000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // ucMachineList
             // 
@@ -225,7 +233,7 @@
             this.Controls.Add(this.layoutControl1);
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "ucMachineList";
-            this.Size = new System.Drawing.Size(922, 90);
+            this.Size = new System.Drawing.Size(922, 100);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
@@ -243,13 +251,14 @@
         #endregion
 
         private DevExpress.XtraEditors.PanelControl panelControl1;
-        private DevExpress.XtraEditors.SimpleButton btnIF;
+        public DevExpress.XtraEditors.SimpleButton btnIF;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
         private DevExpress.XtraLayout.SimpleLabelItem machine_conn;
-        private DevExpress.XtraLayout.SimpleLabelItem machine_proc;
+        public DevExpress.XtraLayout.SimpleLabelItem machine_proc;
         private DevExpress.XtraLayout.SimpleLabelItem machine_amount;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
-        private DevExpress.XtraLayout.SimpleLabelItem machine_name;
+        public DevExpress.XtraLayout.SimpleLabelItem machine_name;
         private DevExpress.XtraLayout.LayoutControl layoutControl1;
+        private System.Windows.Forms.Timer timer1;
     }
 }

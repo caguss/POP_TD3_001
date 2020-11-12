@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             DevExpress.XtraEditors.TileItemElement tileItemElement1 = new DevExpress.XtraEditors.TileItemElement();
             DevExpress.XtraEditors.TileItemElement tileItemElement2 = new DevExpress.XtraEditors.TileItemElement();
             DevExpress.XtraEditors.TileItemElement tileItemElement3 = new DevExpress.XtraEditors.TileItemElement();
@@ -58,6 +59,10 @@
             this.tileBarGroup_worker = new DevExpress.XtraBars.Navigation.TileBarGroup();
             this.tileBar_worker = new DevExpress.XtraBars.Navigation.TileBarItem();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.lbl_message = new System.Windows.Forms.Label();
+            this.lbl_time = new DevExpress.XtraEditors.LabelControl();
             this.btnproduct_out = new DevExpress.XtraEditors.SimpleButton();
             this.btnwork_Finish = new DevExpress.XtraEditors.SimpleButton();
             this.btnmaterial_Out = new DevExpress.XtraEditors.SimpleButton();
@@ -72,26 +77,28 @@
             this.simpleLabelItem3 = new DevExpress.XtraLayout.SimpleLabelItem();
             this.simpleLabelItem4 = new DevExpress.XtraLayout.SimpleLabelItem();
             this.simpleLabelItem5 = new DevExpress.XtraLayout.SimpleLabelItem();
+            this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.itemselectedpopup = new System.Windows.Forms.Panel();
             this.popup_ok = new DevExpress.XtraEditors.SimpleButton();
             this.popup_edit = new DevExpress.XtraEditors.TextEdit();
             this.popup_label = new DevExpress.XtraEditors.LabelControl();
             this._barcodetext = new DevExpress.XtraEditors.TextEdit();
-            this.ucMachineList7 = new POP_TD3_001.ucMachineList();
-            this.ucMachineList6 = new POP_TD3_001.ucMachineList();
-            this.ucMachineList5 = new POP_TD3_001.ucMachineList();
+            this.timer_time = new System.Windows.Forms.Timer(this.components);
+            this.ucMachineList2 = new POP_TD3_001.ucMachineList();
+            this.ucMachineList1 = new POP_TD3_001.ucMachineList();
             this.ucMachineList4 = new POP_TD3_001.ucMachineList();
             this.ucMachineList3 = new POP_TD3_001.ucMachineList();
             this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem9 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem10 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem11 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.tileBarDropDownContainer1)).BeginInit();
             this.tileBarDropDownContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
+            this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
@@ -102,13 +109,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.simpleLabelItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.simpleLabelItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.simpleLabelItem5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
             this.itemselectedpopup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.popup_edit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._barcodetext.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).BeginInit();
             this.SuspendLayout();
@@ -422,9 +429,9 @@
             // 
             // layoutControl1
             // 
-            this.layoutControl1.Controls.Add(this.ucMachineList7);
-            this.layoutControl1.Controls.Add(this.ucMachineList6);
-            this.layoutControl1.Controls.Add(this.ucMachineList5);
+            this.layoutControl1.Controls.Add(this.panelControl1);
+            this.layoutControl1.Controls.Add(this.ucMachineList2);
+            this.layoutControl1.Controls.Add(this.ucMachineList1);
             this.layoutControl1.Controls.Add(this.ucMachineList4);
             this.layoutControl1.Controls.Add(this.ucMachineList3);
             this.layoutControl1.Controls.Add(this.btnproduct_out);
@@ -440,6 +447,55 @@
             this.layoutControl1.TabIndex = 2;
             this.layoutControl1.Text = "layoutControl1";
             // 
+            // panelControl1
+            // 
+            this.panelControl1.Appearance.BackColor = System.Drawing.Color.AliceBlue;
+            this.panelControl1.Appearance.Options.UseBackColor = true;
+            this.panelControl1.Controls.Add(this.labelControl1);
+            this.panelControl1.Controls.Add(this.lbl_message);
+            this.panelControl1.Controls.Add(this.lbl_time);
+            this.panelControl1.Location = new System.Drawing.Point(9, 509);
+            this.panelControl1.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Flat;
+            this.panelControl1.LookAndFeel.UseDefaultLookAndFeel = false;
+            this.panelControl1.Margin = new System.Windows.Forms.Padding(0);
+            this.panelControl1.Name = "panelControl1";
+            this.panelControl1.Size = new System.Drawing.Size(1246, 49);
+            this.panelControl1.TabIndex = 15;
+            // 
+            // labelControl1
+            // 
+            this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 14F);
+            this.labelControl1.Appearance.Options.UseFont = true;
+            this.labelControl1.Location = new System.Drawing.Point(35, 12);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(58, 23);
+            this.labelControl1.TabIndex = 2;
+            this.labelControl1.Text = "MSG : ";
+            // 
+            // lbl_message
+            // 
+            this.lbl_message.AutoSize = true;
+            this.lbl_message.Font = new System.Drawing.Font("Tahoma", 14F);
+            this.lbl_message.ForeColor = System.Drawing.Color.OrangeRed;
+            this.lbl_message.Location = new System.Drawing.Point(90, 12);
+            this.lbl_message.Margin = new System.Windows.Forms.Padding(0);
+            this.lbl_message.Name = "lbl_message";
+            this.lbl_message.Size = new System.Drawing.Size(158, 23);
+            this.lbl_message.TabIndex = 1;
+            this.lbl_message.Text = "에러 및 안내메세지";
+            this.lbl_message.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lbl_message.Visible = false;
+            // 
+            // lbl_time
+            // 
+            this.lbl_time.Appearance.Font = new System.Drawing.Font("Tahoma", 14F);
+            this.lbl_time.Appearance.Options.UseFont = true;
+            this.lbl_time.Location = new System.Drawing.Point(1014, 12);
+            this.lbl_time.Name = "lbl_time";
+            this.lbl_time.Size = new System.Drawing.Size(68, 23);
+            this.lbl_time.TabIndex = 0;
+            this.lbl_time.Text = "현재시간";
+            // 
             // btnproduct_out
             // 
             this.btnproduct_out.Appearance.Font = new System.Drawing.Font("맑은 고딕", 20F);
@@ -447,10 +503,11 @@
             this.btnproduct_out.Appearance.Options.UseFont = true;
             this.btnproduct_out.Location = new System.Drawing.Point(950, 405);
             this.btnproduct_out.Name = "btnproduct_out";
-            this.btnproduct_out.Size = new System.Drawing.Size(284, 86);
+            this.btnproduct_out.Size = new System.Drawing.Size(284, 85);
             this.btnproduct_out.StyleController = this.layoutControl1;
             this.btnproduct_out.TabIndex = 7;
             this.btnproduct_out.Text = "제품출하";
+            this.btnproduct_out.Click += new System.EventHandler(this.btnproduct_out_Click);
             // 
             // btnwork_Finish
             // 
@@ -463,6 +520,7 @@
             this.btnwork_Finish.StyleController = this.layoutControl1;
             this.btnwork_Finish.TabIndex = 6;
             this.btnwork_Finish.Text = "작업완료";
+            this.btnwork_Finish.Click += new System.EventHandler(this.btnwork_Finish_Click);
             // 
             // btnmaterial_Out
             // 
@@ -506,9 +564,9 @@
             this.simpleLabelItem5,
             this.layoutControlItem7,
             this.layoutControlItem8,
-            this.layoutControlItem9,
             this.layoutControlItem10,
-            this.layoutControlItem11});
+            this.layoutControlItem11,
+            this.layoutControlItem5});
             this.layoutControlGroup1.Name = "Root";
             this.layoutControlGroup1.Size = new System.Drawing.Size(1264, 567);
             this.layoutControlGroup1.TextVisible = false;
@@ -556,11 +614,11 @@
             // 
             this.layoutControlItem4.Control = this.btnproduct_out;
             this.layoutControlItem4.Location = new System.Drawing.Point(920, 375);
-            this.layoutControlItem4.MaxSize = new System.Drawing.Size(324, 126);
-            this.layoutControlItem4.MinSize = new System.Drawing.Size(324, 126);
+            this.layoutControlItem4.MaxSize = new System.Drawing.Size(324, 125);
+            this.layoutControlItem4.MinSize = new System.Drawing.Size(324, 125);
             this.layoutControlItem4.Name = "layoutControlItem4";
             this.layoutControlItem4.Padding = new DevExpress.XtraLayout.Utils.Padding(20, 20, 20, 20);
-            this.layoutControlItem4.Size = new System.Drawing.Size(324, 172);
+            this.layoutControlItem4.Size = new System.Drawing.Size(324, 125);
             this.layoutControlItem4.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem4.TextVisible = false;
@@ -569,7 +627,7 @@
             // 
             this.simpleLabelItem1.AllowHotTrack = false;
             this.simpleLabelItem1.AppearanceItemCaption.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.simpleLabelItem1.AppearanceItemCaption.Font = new System.Drawing.Font("맑은 고딕", 20F);
+            this.simpleLabelItem1.AppearanceItemCaption.Font = new System.Drawing.Font("맑은 고딕", 22F, System.Drawing.FontStyle.Bold);
             this.simpleLabelItem1.AppearanceItemCaption.ForeColor = System.Drawing.Color.White;
             this.simpleLabelItem1.AppearanceItemCaption.Options.UseBackColor = true;
             this.simpleLabelItem1.AppearanceItemCaption.Options.UseFont = true;
@@ -578,20 +636,20 @@
             this.simpleLabelItem1.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.simpleLabelItem1.AppearanceItemCaption.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.simpleLabelItem1.Location = new System.Drawing.Point(0, 0);
-            this.simpleLabelItem1.MaxSize = new System.Drawing.Size(213, 97);
-            this.simpleLabelItem1.MinSize = new System.Drawing.Size(213, 97);
+            this.simpleLabelItem1.MaxSize = new System.Drawing.Size(213, 100);
+            this.simpleLabelItem1.MinSize = new System.Drawing.Size(213, 100);
             this.simpleLabelItem1.Name = "simpleLabelItem1";
             this.simpleLabelItem1.Padding = new DevExpress.XtraLayout.Utils.Padding(1, 1, 1, 1);
-            this.simpleLabelItem1.Size = new System.Drawing.Size(213, 97);
+            this.simpleLabelItem1.Size = new System.Drawing.Size(213, 100);
             this.simpleLabelItem1.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.simpleLabelItem1.Text = "항목";
-            this.simpleLabelItem1.TextSize = new System.Drawing.Size(108, 37);
+            this.simpleLabelItem1.TextSize = new System.Drawing.Size(120, 41);
             // 
             // simpleLabelItem2
             // 
             this.simpleLabelItem2.AllowHotTrack = false;
             this.simpleLabelItem2.AppearanceItemCaption.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.simpleLabelItem2.AppearanceItemCaption.Font = new System.Drawing.Font("맑은 고딕", 20F);
+            this.simpleLabelItem2.AppearanceItemCaption.Font = new System.Drawing.Font("맑은 고딕", 22F, System.Drawing.FontStyle.Bold);
             this.simpleLabelItem2.AppearanceItemCaption.ForeColor = System.Drawing.Color.White;
             this.simpleLabelItem2.AppearanceItemCaption.Options.UseBackColor = true;
             this.simpleLabelItem2.AppearanceItemCaption.Options.UseFont = true;
@@ -600,20 +658,20 @@
             this.simpleLabelItem2.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.simpleLabelItem2.AppearanceItemCaption.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.simpleLabelItem2.Location = new System.Drawing.Point(213, 0);
-            this.simpleLabelItem2.MaxSize = new System.Drawing.Size(114, 97);
-            this.simpleLabelItem2.MinSize = new System.Drawing.Size(114, 97);
+            this.simpleLabelItem2.MaxSize = new System.Drawing.Size(114, 100);
+            this.simpleLabelItem2.MinSize = new System.Drawing.Size(114, 100);
             this.simpleLabelItem2.Name = "simpleLabelItem2";
             this.simpleLabelItem2.Padding = new DevExpress.XtraLayout.Utils.Padding(1, 1, 1, 1);
-            this.simpleLabelItem2.Size = new System.Drawing.Size(114, 97);
+            this.simpleLabelItem2.Size = new System.Drawing.Size(114, 100);
             this.simpleLabelItem2.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.simpleLabelItem2.Text = "I/F";
-            this.simpleLabelItem2.TextSize = new System.Drawing.Size(108, 37);
+            this.simpleLabelItem2.TextSize = new System.Drawing.Size(120, 40);
             // 
             // simpleLabelItem3
             // 
             this.simpleLabelItem3.AllowHotTrack = false;
             this.simpleLabelItem3.AppearanceItemCaption.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.simpleLabelItem3.AppearanceItemCaption.Font = new System.Drawing.Font("맑은 고딕", 20F);
+            this.simpleLabelItem3.AppearanceItemCaption.Font = new System.Drawing.Font("맑은 고딕", 22F, System.Drawing.FontStyle.Bold);
             this.simpleLabelItem3.AppearanceItemCaption.ForeColor = System.Drawing.Color.White;
             this.simpleLabelItem3.AppearanceItemCaption.Options.UseBackColor = true;
             this.simpleLabelItem3.AppearanceItemCaption.Options.UseFont = true;
@@ -622,20 +680,20 @@
             this.simpleLabelItem3.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.simpleLabelItem3.AppearanceItemCaption.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.simpleLabelItem3.Location = new System.Drawing.Point(327, 0);
-            this.simpleLabelItem3.MaxSize = new System.Drawing.Size(225, 97);
-            this.simpleLabelItem3.MinSize = new System.Drawing.Size(225, 97);
+            this.simpleLabelItem3.MaxSize = new System.Drawing.Size(225, 100);
+            this.simpleLabelItem3.MinSize = new System.Drawing.Size(225, 100);
             this.simpleLabelItem3.Name = "simpleLabelItem3";
             this.simpleLabelItem3.Padding = new DevExpress.XtraLayout.Utils.Padding(1, 1, 1, 1);
-            this.simpleLabelItem3.Size = new System.Drawing.Size(225, 97);
+            this.simpleLabelItem3.Size = new System.Drawing.Size(225, 100);
             this.simpleLabelItem3.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.simpleLabelItem3.Text = "연결상태";
-            this.simpleLabelItem3.TextSize = new System.Drawing.Size(108, 37);
+            this.simpleLabelItem3.TextSize = new System.Drawing.Size(120, 41);
             // 
             // simpleLabelItem4
             // 
             this.simpleLabelItem4.AllowHotTrack = false;
             this.simpleLabelItem4.AppearanceItemCaption.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.simpleLabelItem4.AppearanceItemCaption.Font = new System.Drawing.Font("맑은 고딕", 20F);
+            this.simpleLabelItem4.AppearanceItemCaption.Font = new System.Drawing.Font("맑은 고딕", 22F, System.Drawing.FontStyle.Bold);
             this.simpleLabelItem4.AppearanceItemCaption.ForeColor = System.Drawing.Color.White;
             this.simpleLabelItem4.AppearanceItemCaption.Options.UseBackColor = true;
             this.simpleLabelItem4.AppearanceItemCaption.Options.UseFont = true;
@@ -644,20 +702,20 @@
             this.simpleLabelItem4.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.simpleLabelItem4.AppearanceItemCaption.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.simpleLabelItem4.Location = new System.Drawing.Point(552, 0);
-            this.simpleLabelItem4.MaxSize = new System.Drawing.Size(184, 97);
-            this.simpleLabelItem4.MinSize = new System.Drawing.Size(184, 97);
+            this.simpleLabelItem4.MaxSize = new System.Drawing.Size(184, 100);
+            this.simpleLabelItem4.MinSize = new System.Drawing.Size(184, 100);
             this.simpleLabelItem4.Name = "simpleLabelItem4";
             this.simpleLabelItem4.Padding = new DevExpress.XtraLayout.Utils.Padding(1, 1, 1, 1);
-            this.simpleLabelItem4.Size = new System.Drawing.Size(184, 97);
+            this.simpleLabelItem4.Size = new System.Drawing.Size(184, 100);
             this.simpleLabelItem4.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.simpleLabelItem4.Text = "설비상태";
-            this.simpleLabelItem4.TextSize = new System.Drawing.Size(108, 37);
+            this.simpleLabelItem4.TextSize = new System.Drawing.Size(120, 41);
             // 
             // simpleLabelItem5
             // 
             this.simpleLabelItem5.AllowHotTrack = false;
             this.simpleLabelItem5.AppearanceItemCaption.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.simpleLabelItem5.AppearanceItemCaption.Font = new System.Drawing.Font("맑은 고딕", 20F);
+            this.simpleLabelItem5.AppearanceItemCaption.Font = new System.Drawing.Font("맑은 고딕", 22F, System.Drawing.FontStyle.Bold);
             this.simpleLabelItem5.AppearanceItemCaption.ForeColor = System.Drawing.Color.White;
             this.simpleLabelItem5.AppearanceItemCaption.Options.UseBackColor = true;
             this.simpleLabelItem5.AppearanceItemCaption.Options.UseFont = true;
@@ -666,14 +724,24 @@
             this.simpleLabelItem5.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.simpleLabelItem5.AppearanceItemCaption.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.simpleLabelItem5.Location = new System.Drawing.Point(736, 0);
-            this.simpleLabelItem5.MaxSize = new System.Drawing.Size(184, 97);
-            this.simpleLabelItem5.MinSize = new System.Drawing.Size(184, 97);
+            this.simpleLabelItem5.MaxSize = new System.Drawing.Size(184, 100);
+            this.simpleLabelItem5.MinSize = new System.Drawing.Size(184, 100);
             this.simpleLabelItem5.Name = "simpleLabelItem5";
             this.simpleLabelItem5.Padding = new DevExpress.XtraLayout.Utils.Padding(1, 1, 1, 1);
-            this.simpleLabelItem5.Size = new System.Drawing.Size(184, 97);
+            this.simpleLabelItem5.Size = new System.Drawing.Size(184, 100);
             this.simpleLabelItem5.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.simpleLabelItem5.Text = "생산실적";
-            this.simpleLabelItem5.TextSize = new System.Drawing.Size(108, 37);
+            this.simpleLabelItem5.TextSize = new System.Drawing.Size(120, 41);
+            // 
+            // layoutControlItem5
+            // 
+            this.layoutControlItem5.Control = this.panelControl1;
+            this.layoutControlItem5.Location = new System.Drawing.Point(0, 500);
+            this.layoutControlItem5.Name = "layoutControlItem5";
+            this.layoutControlItem5.Padding = new DevExpress.XtraLayout.Utils.Padding(-1, -1, -1, -1);
+            this.layoutControlItem5.Size = new System.Drawing.Size(1244, 47);
+            this.layoutControlItem5.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem5.TextVisible = false;
             // 
             // emptySpaceItem1
             // 
@@ -689,7 +757,7 @@
             this.itemselectedpopup.Controls.Add(this.popup_ok);
             this.itemselectedpopup.Controls.Add(this.popup_edit);
             this.itemselectedpopup.Controls.Add(this.popup_label);
-            this.itemselectedpopup.Location = new System.Drawing.Point(327, 182);
+            this.itemselectedpopup.Location = new System.Drawing.Point(305, 191);
             this.itemselectedpopup.Name = "itemselectedpopup";
             this.itemselectedpopup.Size = new System.Drawing.Size(654, 412);
             this.itemselectedpopup.TabIndex = 100;
@@ -737,93 +805,88 @@
             this._barcodetext.Size = new System.Drawing.Size(100, 20);
             this._barcodetext.TabIndex = 101;
             // 
-            // ucMachineList7
+            // timer_time
             // 
-            this.ucMachineList7.Location = new System.Drawing.Point(10, 197);
-            this.ucMachineList7.Margin = new System.Windows.Forms.Padding(0);
-            this.ucMachineList7.Name = "ucMachineList7";
-            this.ucMachineList7.Size = new System.Drawing.Size(920, 90);
-            this.ucMachineList7.TabIndex = 14;
+            this.timer_time.Interval = 1000;
+            this.timer_time.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // ucMachineList6
+            // ucMachineList2
             // 
-            this.ucMachineList6.Location = new System.Drawing.Point(10, 107);
-            this.ucMachineList6.Margin = new System.Windows.Forms.Padding(0);
-            this.ucMachineList6.Name = "ucMachineList6";
-            this.ucMachineList6.Size = new System.Drawing.Size(920, 90);
-            this.ucMachineList6.TabIndex = 13;
+            this.ucMachineList2.Location = new System.Drawing.Point(10, 210);
+            this.ucMachineList2.Margin = new System.Windows.Forms.Padding(0);
+            this.ucMachineList2.Name = "ucMachineList2";
+            this.ucMachineList2.Size = new System.Drawing.Size(920, 100);
+            this.ucMachineList2.TabIndex = 14;
             // 
-            // ucMachineList5
+            // ucMachineList1
             // 
-            this.ucMachineList5.Location = new System.Drawing.Point(10, 467);
-            this.ucMachineList5.Margin = new System.Windows.Forms.Padding(0);
-            this.ucMachineList5.Name = "ucMachineList5";
-            this.ucMachineList5.Size = new System.Drawing.Size(920, 90);
-            this.ucMachineList5.TabIndex = 12;
+            this.ucMachineList1.Location = new System.Drawing.Point(10, 110);
+            this.ucMachineList1.Margin = new System.Windows.Forms.Padding(0);
+            this.ucMachineList1.Name = "ucMachineList1";
+            this.ucMachineList1.Size = new System.Drawing.Size(920, 100);
+            this.ucMachineList1.TabIndex = 13;
             // 
             // ucMachineList4
             // 
-            this.ucMachineList4.Location = new System.Drawing.Point(10, 377);
+            this.ucMachineList4.Location = new System.Drawing.Point(10, 410);
             this.ucMachineList4.Margin = new System.Windows.Forms.Padding(0);
             this.ucMachineList4.Name = "ucMachineList4";
-            this.ucMachineList4.Size = new System.Drawing.Size(920, 90);
+            this.ucMachineList4.Size = new System.Drawing.Size(920, 100);
             this.ucMachineList4.TabIndex = 11;
             // 
             // ucMachineList3
             // 
-            this.ucMachineList3.Location = new System.Drawing.Point(10, 287);
+            this.ucMachineList3.Location = new System.Drawing.Point(10, 310);
             this.ucMachineList3.Margin = new System.Windows.Forms.Padding(0);
             this.ucMachineList3.Name = "ucMachineList3";
-            this.ucMachineList3.Size = new System.Drawing.Size(920, 90);
+            this.ucMachineList3.Size = new System.Drawing.Size(920, 100);
             this.ucMachineList3.TabIndex = 10;
             // 
             // layoutControlItem7
             // 
             this.layoutControlItem7.Control = this.ucMachineList3;
-            this.layoutControlItem7.Location = new System.Drawing.Point(0, 277);
+            this.layoutControlItem7.Location = new System.Drawing.Point(0, 300);
+            this.layoutControlItem7.MinSize = new System.Drawing.Size(393, 37);
             this.layoutControlItem7.Name = "layoutControlItem7";
             this.layoutControlItem7.Padding = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0);
-            this.layoutControlItem7.Size = new System.Drawing.Size(920, 90);
+            this.layoutControlItem7.Size = new System.Drawing.Size(920, 100);
+            this.layoutControlItem7.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem7.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem7.TextVisible = false;
             // 
             // layoutControlItem8
             // 
             this.layoutControlItem8.Control = this.ucMachineList4;
-            this.layoutControlItem8.Location = new System.Drawing.Point(0, 367);
+            this.layoutControlItem8.Location = new System.Drawing.Point(0, 400);
+            this.layoutControlItem8.MinSize = new System.Drawing.Size(393, 37);
             this.layoutControlItem8.Name = "layoutControlItem8";
             this.layoutControlItem8.Padding = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0);
-            this.layoutControlItem8.Size = new System.Drawing.Size(920, 90);
+            this.layoutControlItem8.Size = new System.Drawing.Size(920, 100);
+            this.layoutControlItem8.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem8.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem8.TextVisible = false;
             // 
-            // layoutControlItem9
-            // 
-            this.layoutControlItem9.Control = this.ucMachineList5;
-            this.layoutControlItem9.Location = new System.Drawing.Point(0, 457);
-            this.layoutControlItem9.Name = "layoutControlItem9";
-            this.layoutControlItem9.Padding = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0);
-            this.layoutControlItem9.Size = new System.Drawing.Size(920, 90);
-            this.layoutControlItem9.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem9.TextVisible = false;
-            // 
             // layoutControlItem10
             // 
-            this.layoutControlItem10.Control = this.ucMachineList6;
-            this.layoutControlItem10.Location = new System.Drawing.Point(0, 97);
+            this.layoutControlItem10.Control = this.ucMachineList1;
+            this.layoutControlItem10.Location = new System.Drawing.Point(0, 100);
+            this.layoutControlItem10.MinSize = new System.Drawing.Size(393, 37);
             this.layoutControlItem10.Name = "layoutControlItem10";
             this.layoutControlItem10.Padding = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0);
-            this.layoutControlItem10.Size = new System.Drawing.Size(920, 90);
+            this.layoutControlItem10.Size = new System.Drawing.Size(920, 100);
+            this.layoutControlItem10.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem10.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem10.TextVisible = false;
             // 
             // layoutControlItem11
             // 
-            this.layoutControlItem11.Control = this.ucMachineList7;
-            this.layoutControlItem11.Location = new System.Drawing.Point(0, 187);
+            this.layoutControlItem11.Control = this.ucMachineList2;
+            this.layoutControlItem11.Location = new System.Drawing.Point(0, 200);
+            this.layoutControlItem11.MinSize = new System.Drawing.Size(393, 37);
             this.layoutControlItem11.Name = "layoutControlItem11";
             this.layoutControlItem11.Padding = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0);
-            this.layoutControlItem11.Size = new System.Drawing.Size(920, 90);
+            this.layoutControlItem11.Size = new System.Drawing.Size(920, 100);
+            this.layoutControlItem11.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem11.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem11.TextVisible = false;
             // 
@@ -838,6 +901,7 @@
             this.Controls.Add(this.tileBar1);
             this.Controls.Add(this.tileBarDropDownContainer1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "POP";
@@ -846,6 +910,9 @@
             this.tileBarDropDownContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
+            this.panelControl1.ResumeLayout(false);
+            this.panelControl1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
@@ -856,6 +923,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.simpleLabelItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.simpleLabelItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.simpleLabelItem5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
             this.itemselectedpopup.ResumeLayout(false);
             this.itemselectedpopup.PerformLayout();
@@ -863,7 +931,6 @@
             ((System.ComponentModel.ISupportInitialize)(this._barcodetext.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).EndInit();
             this.ResumeLayout(false);
@@ -911,17 +978,21 @@
         private DevExpress.XtraLayout.SimpleLabelItem simpleLabelItem3;
         private DevExpress.XtraLayout.SimpleLabelItem simpleLabelItem4;
         private DevExpress.XtraLayout.SimpleLabelItem simpleLabelItem5;
-        private ucMachineList ucMachineList5;
         private ucMachineList ucMachineList4;
         private ucMachineList ucMachineList3;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem7;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem8;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem9;
-        private ucMachineList ucMachineList7;
-        private ucMachineList ucMachineList6;
+        private ucMachineList ucMachineList2;
+        private ucMachineList ucMachineList1;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem10;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem11;
         private DevExpress.XtraEditors.TextEdit _barcodetext;
+        private DevExpress.XtraEditors.PanelControl panelControl1;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
+        private System.Windows.Forms.Label lbl_message;
+        private DevExpress.XtraEditors.LabelControl lbl_time;
+        private System.Windows.Forms.Timer timer_time;
+        private DevExpress.XtraEditors.LabelControl labelControl1;
     }
 }
 

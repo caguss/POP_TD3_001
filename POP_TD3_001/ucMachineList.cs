@@ -19,9 +19,11 @@ namespace POP_TD3_001
             machine_Refresh();
         }
 
-        private void machine_Refresh()
+        public void machine_Refresh()
         {
             //DB로 값 불러오기
+
+
             string equip_status = machine_proc.Text;
             string conn_status = machine_conn.Text;
 
@@ -49,79 +51,42 @@ namespace POP_TD3_001
                     machine_proc.AppearanceItemCaption.ForeColor = Color.LimeGreen;
                     break;
                 case "Down":// down
-                    machine_proc.Text = "생산중";
+                    machine_proc.Text = "Down";
                     machine_proc.AppearanceItemCaption.ForeColor = Color.Red;
+                    //알람 보내기 -> Main Form 에서 처리
                     break;
             }
-        }
-        #region 메세지 메소드
-        private void ShowErrorMessage(Exception ex)
-        {
-            XtraMessageBoxArgs args = new XtraMessageBoxArgs();
-            args.Caption = "ERROR";
-            args.Text = "에러 : 잠시 후 다시 시도해 주세요. 에러내용 : " + ex;
-            args.Buttons = new DialogResult[] { DialogResult.OK };
-            args.Showing += Args_Showing;
-            XtraMessageBox.Show(args).ToString();
+
+            //생산실적
+
         }
 
-        private void Args_Showing(object sender, XtraMessageShowingArgs e)
+        public void Change_conn()
         {
-            e.Form.Appearance.FontStyleDelta = FontStyle.Bold;
-            e.Form.Appearance.Font = new Font(new FontFamily("맑은 고딕"), 20);
-
-            MessageButtonCollection buttons = e.Buttons as MessageButtonCollection;
-            SimpleButton btn = buttons[System.Windows.Forms.DialogResult.OK] as SimpleButton;
-            btn.Text = "확인";
-
-            if (btn != null)
-            {
-                btn.Appearance.FontSizeDelta = 20;
-                btn.Height -= 200;
-                btn.Size = new Size(200, 100);
-            }
-        }
-        #endregion
-
-
-        private void btnIF_Click(object sender, EventArgs e)
-        {
-            
+              
             switch (machine_conn.Text) // 연결상태
             {
                 case "On-Line":
-                    try
-                    {
+                    
                         //db로 업데이트
                         machine_conn.Text = "Off-Line";
                         machine_conn.AppearanceItemCaption.ForeColor = Color.Crimson;
-
-                    }
-                    catch (Exception ex)
-                    {
-                        ShowErrorMessage(ex);
-                    }
-
                     break;
 
                 case "Off-Line":
 
-                    try
-                    {
                         //db로 업데이트
                         machine_conn.Text = "On-Line";
                         machine_conn.AppearanceItemCaption.ForeColor = Color.MediumBlue;
-                    }
-                    catch (Exception ex)
-                    {
-                        ShowErrorMessage(ex);
-
-                    }
-
                     break;
             }
 
 
+            machine_Refresh();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
             machine_Refresh();
         }
     }
