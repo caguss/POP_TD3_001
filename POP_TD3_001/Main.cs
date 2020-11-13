@@ -20,17 +20,16 @@ namespace POP_TD3_001
         delegate void TimerEventFiredDelegate(); // 타이머이벤트
         TileItem selecteditem = null; // 클릭한 아이템 변수
         int blinkcount = 11; // 10 이하면 안내메세지 blink
-
-
         #region 메인폼관련 메소드
         public Main()
         {
             InitializeComponent();
+            ucKeypad1.SetEdit(popup_edit);
+
             _barcodetext.Location = new Point(-100, -100);
             timer = new System.Threading.Timer(new System.Threading.TimerCallback(CallBack));
             timer.Change(20, 500);
             timer_time.Start();
-
             #region 추후 uc 동적으로 생성
 
             ucMachineList1.btnIF.Click += BtnIF_Click;
@@ -40,11 +39,8 @@ namespace POP_TD3_001
             ucMachineList3.btnIF.Click += BtnIF_Click;
             ucMachineList3.machine_name.Text = "Load/Unload";
 
-            ucMachineList4.btnIF.Click += BtnIF_Click;
-            ucMachineList4.machine_name.Text = "Test_Machine";
 
-            #endregion 
-
+            #endregion
 
         }
 
@@ -65,11 +61,10 @@ namespace POP_TD3_001
         private void Main_FormClosing(object sender, FormClosingEventArgs e)
         {
             timer.Change(Timeout.Infinite, Timeout.Infinite);
-
         }
 
         #endregion
-
+        
 
         #region 타이머 관련 메소드
         void CallBack(Object state)
@@ -90,9 +85,11 @@ namespace POP_TD3_001
                 _barcodetext.Text = "";
 
             }
-
             _barcodetext.Focus();
             this.ActiveControl = _barcodetext;
+
+
+
 
         }
 
@@ -100,7 +97,7 @@ namespace POP_TD3_001
         private void timer1_Tick(object sender, EventArgs e)
         {
             bool downcheck = false;
-            ucMachineList[] machineList = new ucMachineList[4] { ucMachineList1, ucMachineList2, ucMachineList3, ucMachineList4 };
+            ucMachineList[] machineList = new ucMachineList[3] { ucMachineList1, ucMachineList2, ucMachineList3 };
 
             //blink
             if (blinkcount < 10)
@@ -171,7 +168,7 @@ namespace POP_TD3_001
         #region TileBar 관련 메소드
         private void popupok_Click(object sender, EventArgs e)
         {
-
+           
             if (selecteditem.Tag.ToString() == "수    량")
             {
                 if (popup_edit.Text != "")
@@ -197,6 +194,7 @@ namespace POP_TD3_001
 
         private void PopUpOff()
         {
+            ucKeypad1.Visible = false;
             itemselectedpopup.Visible = false;
             btnmaterial_In.Enabled = true;
             btnmaterial_Out.Enabled = true;
@@ -212,12 +210,13 @@ namespace POP_TD3_001
 
 
             PopupClear();
+            popup_label.Text = e.Item.Tag.ToString();
+            popup_edit.Text = e.Item.Text;
             PopupOn();
 
 
 
 
-            popup_label.Text = e.Item.Tag.ToString();
             selecteditem = e.Item;
             this.ActiveControl = popup_edit;
         }
@@ -229,6 +228,15 @@ namespace POP_TD3_001
             btnmaterial_Out.Enabled = false;
             btnproduct_out.Enabled = false;
             btnwork_Finish.Enabled = false;
+            if (popup_label.Text == "수     량" || popup_label.Text == "작업지시")
+            {
+                btn_number.Visible = true;
+            }
+            else
+            {
+                btn_number.Visible = false;
+            }
+            popup_edit.Focus();
         }
 
         private void PopupClear()
@@ -377,8 +385,37 @@ namespace POP_TD3_001
             blinkcount = 0;
             lbl_message.Visible = true;
         }
+
         #endregion
 
+        #region 비고 관련 메소드
+        private void remark_Click(object sender, EventArgs e)
+        {
+            timer.Change(Timeout.Infinite, Timeout.Infinite);
+        }
 
+        private void txt_remark_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                _barcodetext.Focus();
+                this.ActiveControl = _barcodetext;
+                timer.Change(20, 500);
+
+            }
+        }
+        #endregion
+
+        private void btn_number_Click(object sender, EventArgs e)
+        {
+            if (ucKeypad1.Visible)
+            {
+                ucKeypad1.Visible = false;
+            }
+            else
+            {
+                ucKeypad1.Visible = true;
+            }
+        }
     }
 }
