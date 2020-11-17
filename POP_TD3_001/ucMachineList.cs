@@ -13,19 +13,20 @@ namespace POP_TD3_001
 {
     public partial class ucMachineList : DevExpress.XtraEditors.XtraUserControl
     {
+        SettingBusiness business = new SettingBusiness();
         public ucMachineList()
         {
             InitializeComponent();
-            machine_Refresh();
         }
 
         public void machine_Refresh()
         {
+
             //DB로 값 불러오기
+            DataTable pDataTable = business.Machine_Refresh(machine_name.Text);
 
-
-            string equip_status = machine_proc.Text;
-            string conn_status = machine_conn.Text;
+            string equip_status = pDataTable.Rows[0]["RES_STS"].ToString();
+            string conn_status = pDataTable.Rows[0]["RES_IF_STS"].ToString();
 
 
             switch (conn_status) // 연결상태
@@ -59,35 +60,32 @@ namespace POP_TD3_001
 
             //생산실적
 
+
+
         }
 
         public void Change_conn()
         {
-              
-            switch (machine_conn.Text) // 연결상태
-            {
-                case "On-Line":
-                    
-                        //db로 업데이트
-                        machine_conn.Text = "Off-Line";
-                        machine_conn.AppearanceItemCaption.ForeColor = Color.Crimson;
-                    break;
+            business.Change_Connection();
 
-                case "Off-Line":
+            //switch (machine_conn.Text) // 연결상태
+            //{
+            //    case "On-Line":
 
-                        //db로 업데이트
-                        machine_conn.Text = "On-Line";
-                        machine_conn.AppearanceItemCaption.ForeColor = Color.MediumBlue;
-                    break;
-            }
+            //        //db로 업데이트
+            //        machine_conn.Text = "Off-Line";
+            //        machine_conn.AppearanceItemCaption.ForeColor = Color.Crimson;
+            //        break;
 
+            //    case "Off-Line":
 
-            machine_Refresh();
+            //        //db로 업데이트
+            //        machine_conn.Text = "On-Line";
+            //        machine_conn.AppearanceItemCaption.ForeColor = Color.MediumBlue;
+            //        break;
+            //}
+
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            machine_Refresh();
-        }
     }
 }

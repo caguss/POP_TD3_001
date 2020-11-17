@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace POP_TD3_001
 {
@@ -17,32 +18,82 @@ namespace POP_TD3_001
     {
         int nowmin = 0; // 현재시각 판별
         System.Threading.Timer timer = null; // 타이머 선언
+        SettingBusiness business = new SettingBusiness();
         delegate void TimerEventFiredDelegate(); // 타이머이벤트
         TileItem selecteditem = null; // 클릭한 아이템 변수
-        int blinkcount = 11; // 10 이하면 안내메세지 blink
+        ucMachineList[] machineList = null;
+        DataTable list;
+
+
         #region 메인폼관련 메소드
         public Main()
         {
             InitializeComponent();
             ucKeypad1.SetEdit(popup_edit);
-
+            machineList = new ucMachineList[3] { ucMachineList1, ucMachineList2, ucMachineList3 };
             _barcodetext.Location = new Point(-100, -100);
             timer = new System.Threading.Timer(new System.Threading.TimerCallback(CallBack));
-            timer.Change(20, 500);
-            timer_time.Start();
+
             #region 추후 uc 동적으로 생성
 
-            ucMachineList1.btnIF.Click += BtnIF_Click;
-            ucMachineList2.btnIF.Click += BtnIF_Click;
-            ucMachineList2.machine_name.Text = "절곡기";
 
-            ucMachineList3.btnIF.Click += BtnIF_Click;
-            ucMachineList3.machine_name.Text = "Load/Unload";
+            //ucMachineList1.btnIF.Click += BtnIF_Click;
+            //ucMachineList2.btnIF.Click += BtnIF_Click;
+            //ucMachineList2.machine_name.Text = "절곡기";
+
+            //ucMachineList3.btnIF.Click += BtnIF_Click;
+            //ucMachineList3.machine_name.Text = "Load/Unload";
+
+            list = business.Machine_List();
+
+            if (list.Rows.Count <= 3)
+            {
+                int i = 0;
+                for (i = 0; i < list.Rows.Count; i++)
+                {
+
+                    machineList[i].machine_name.Text = list.Rows[i]["RES_ID"].ToString();
+                    machineList[i].machine_conn.Text = list.Rows[i]["RES_IF_STS"].ToString();
+                    machineList[i].machine_proc.Text = list.Rows[i]["RES_STS"].ToString();
+                    machineList[i].machine_amount.Text = Math.Round(decimal.Parse(list.Rows[i]["PROD_QTY"].ToString()), 0).ToString().PadLeft(4, '0');
+
+                    for (i = list.Rows.Count; i < 3; i++)
+                    {
+                        machineList[i].Visible = false;
+                    }
 
 
-            #endregion
+                }
+
+
+                timer.Change(20, 500);
+                timer_time.Start();
+
+            }
+            else
+            {
+                Message_Red("사용중인 설비가 3개 초과입니다. 데이터 베이스를 확인해 주세요 ");
+            }
+
+
 
         }
+
+
+        private void btn_number_Click(object sender, EventArgs e)
+        {
+            if (ucKeypad1.Visible)
+            {
+                ucKeypad1.Visible = false;
+            }
+            else
+            {
+                ucKeypad1.Visible = true;
+            }
+        }
+
+
+        #endregion
 
         private void BtnIF_Click(object sender, EventArgs e)
         {
@@ -64,7 +115,7 @@ namespace POP_TD3_001
         }
 
         #endregion
-        
+
 
         #region 타이머 관련 메소드
         void CallBack(Object state)
@@ -93,26 +144,11 @@ namespace POP_TD3_001
 
         }
 
-
         private void timer1_Tick(object sender, EventArgs e)
         {
             bool downcheck = false;
-            ucMachineList[] machineList = new ucMachineList[3] { ucMachineList1, ucMachineList2, ucMachineList3 };
 
-            //blink
-            if (blinkcount < 10)
-            {
-                if (lbl_message.Visible == true)
-                {
-                    lbl_message.Visible = false;
-                }
-                else
-                {
-                    lbl_message.Visible = true;
-                }
 
-                blinkcount++;
-            }
 
             //time
             CSafeSetText(lbl_time, DateTime.Now.ToString());
@@ -132,21 +168,27 @@ namespace POP_TD3_001
 
             if (downcheck)
             {
-                foreach (ucMachineList item in machineList)
+                for (int i = 0; i < list.Rows.Count; i++)
                 {
-                    if (item.machine_proc.Text == "Down")
+                    try
+                    {
+                        machineList[i].machine_Refresh();
+                    }
+                    catch (Exception ex)
+                    {
+                        Message_Red(ex.ToString());
+                    }
+
+                    if (machineList[i].machine_proc.Text == "Down")
                     {
                         //알람발생
-                        item.machine_name.AppearanceItemCaption.BackColor = Color.FromArgb(255, 192, 192);
-
-                        Message_Red(item.machine_name.Text + "설비 Down! 설비를 확인해주세요.");
+                        machineList[i].machine_name.AppearanceItemCaption.BackColor = Color.FromArgb(255, 192, 192);
+                        Message_Red(machineList[i].machine_name.Text + "설비 Down! 설비를 확인해주세요.");
                     }
                     else
                     {
-                        item.machine_name.AppearanceItemCaption.BackColor = Color.Empty;
-
+                        machineList[i].machine_name.AppearanceItemCaption.BackColor = Color.Empty;
                     }
-
                 }
             }
         }
@@ -168,7 +210,7 @@ namespace POP_TD3_001
         #region TileBar 관련 메소드
         private void popupok_Click(object sender, EventArgs e)
         {
-           
+
             if (selecteditem.Tag.ToString() == "수    량")
             {
                 if (popup_edit.Text != "")
@@ -373,7 +415,6 @@ namespace POP_TD3_001
 
         public void Message_blue(string msg)
         {
-            blinkcount = 11;
             lbl_message.ForeColor = Color.RoyalBlue;
             lbl_message.Text = msg;
             lbl_message.Visible = true;
@@ -382,7 +423,6 @@ namespace POP_TD3_001
         {
             lbl_message.ForeColor = Color.OrangeRed;
             lbl_message.Text = msg;
-            blinkcount = 0;
             lbl_message.Visible = true;
         }
 
@@ -406,16 +446,6 @@ namespace POP_TD3_001
         }
         #endregion
 
-        private void btn_number_Click(object sender, EventArgs e)
-        {
-            if (ucKeypad1.Visible)
-            {
-                ucKeypad1.Visible = false;
-            }
-            else
-            {
-                ucKeypad1.Visible = true;
-            }
-        }
+
     }
 }

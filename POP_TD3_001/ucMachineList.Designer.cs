@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.btnIF = new DevExpress.XtraEditors.SimpleButton();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
@@ -38,7 +37,6 @@
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.machine_name = new DevExpress.XtraLayout.SimpleLabelItem();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
@@ -58,6 +56,7 @@
             this.panelControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
             this.panelControl1.Controls.Add(this.btnIF);
             this.panelControl1.Location = new System.Drawing.Point(213, 0);
+            this.panelControl1.LookAndFeel.UseDefaultLookAndFeel = false;
             this.panelControl1.Margin = new System.Windows.Forms.Padding(0);
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Padding = new System.Windows.Forms.Padding(10, 5, 10, 5);
@@ -221,11 +220,6 @@
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
-            // timer1
-            // 
-            this.timer1.Interval = 2000;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
             // ucMachineList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -250,15 +244,14 @@
 
         #endregion
 
-        private DevExpress.XtraEditors.PanelControl panelControl1;
+        public DevExpress.XtraEditors.PanelControl panelControl1;
         public DevExpress.XtraEditors.SimpleButton btnIF;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
-        private DevExpress.XtraLayout.SimpleLabelItem machine_conn;
+        public DevExpress.XtraLayout.SimpleLabelItem machine_conn;
         public DevExpress.XtraLayout.SimpleLabelItem machine_proc;
-        private DevExpress.XtraLayout.SimpleLabelItem machine_amount;
+        public DevExpress.XtraLayout.SimpleLabelItem machine_amount;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
         public DevExpress.XtraLayout.SimpleLabelItem machine_name;
         private DevExpress.XtraLayout.LayoutControl layoutControl1;
-        private System.Windows.Forms.Timer timer1;
     }
 }
