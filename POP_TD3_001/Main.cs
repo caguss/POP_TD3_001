@@ -14,6 +14,7 @@ using MySql.Data.MySqlClient;
 
 namespace POP_TD3_001
 {
+
     public partial class Main : Form
     {
         int nowmin = 0; // 현재시각 판별
@@ -34,15 +35,8 @@ namespace POP_TD3_001
             _barcodetext.Location = new Point(-100, -100);
             timer = new System.Threading.Timer(new System.Threading.TimerCallback(CallBack));
 
-            #region 추후 uc 동적으로 생성
+            #region uc 동적으로 생성
 
-
-            //ucMachineList1.btnIF.Click += BtnIF_Click;
-            //ucMachineList2.btnIF.Click += BtnIF_Click;
-            //ucMachineList2.machine_name.Text = "절곡기";
-
-            //ucMachineList3.btnIF.Click += BtnIF_Click;
-            //ucMachineList3.machine_name.Text = "Load/Unload";
 
             list = business.Machine_List();
 
@@ -56,16 +50,13 @@ namespace POP_TD3_001
                     machineList[i].machine_conn.Text = list.Rows[i]["RES_IF_STS"].ToString();
                     machineList[i].machine_proc.Text = list.Rows[i]["RES_STS"].ToString();
                     machineList[i].machine_amount.Text = Math.Round(decimal.Parse(list.Rows[i]["PROD_QTY"].ToString()), 0).ToString().PadLeft(4, '0');
-
-                    for (i = list.Rows.Count; i < 3; i++)
-                    {
-                        machineList[i].Visible = false;
-                    }
-
-
+                    machineList[i].btnIF.Click += BtnIF_Click;
                 }
 
-
+                for (i = list.Rows.Count; i < 3; i++)
+                {
+                    machineList[i].Controls.Clear();
+                }
                 timer.Change(20, 500);
                 timer_time.Start();
 
@@ -75,7 +66,7 @@ namespace POP_TD3_001
                 Message_Red("사용중인 설비가 3개 초과입니다. 데이터 베이스를 확인해 주세요 ");
             }
 
-
+            #endregion
 
         }
 
@@ -92,15 +83,13 @@ namespace POP_TD3_001
             }
         }
 
-
-        #endregion
-
         private void BtnIF_Click(object sender, EventArgs e)
         {
             try
             {
+                //연결 끊기 
                 ucMachineList clicked = ((ucMachineList)((SimpleButton)sender).Parent.Parent.Parent);
-                clicked.Change_conn();
+                clicked.Change_conn(clicked.machine_name.Text);
                 Message_blue(clicked.machine_name.Text + " 설비의 연결 상태를 변경하였습니다.");
             }
             catch (Exception ex)
@@ -139,16 +128,11 @@ namespace POP_TD3_001
             _barcodetext.Focus();
             this.ActiveControl = _barcodetext;
 
-
-
-
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
             bool downcheck = false;
-
-
 
             //time
             CSafeSetText(lbl_time, DateTime.Now.ToString());
@@ -234,6 +218,10 @@ namespace POP_TD3_001
 
         }
 
+        private void tileBar_process_ItemClick(object sender, TileItemEventArgs e)
+        {
+            PopUpOff();
+        }
         private void PopUpOff()
         {
             ucKeypad1.Visible = false;
@@ -286,7 +274,10 @@ namespace POP_TD3_001
             popup_edit.Text = "";
         }
 
-
+        private void tileBar1_DropDownShowing(object sender, DevExpress.XtraBars.Navigation.TileBarDropDownShowingEventArgs e)
+        {
+            PopUpOff();
+        }
         private void tileBarItem_ItemClick_Child(object sender, TileItemEventArgs e)
         {
             tileBar_process.Text = e.Item.Text;
@@ -304,13 +295,46 @@ namespace POP_TD3_001
         #endregion
 
         #region 4개버튼 이벤트
+
+
+        //자재입고
         private void btnmaterial_In_Click(object sender, EventArgs e)
         {
             if (Checkcode())
             {
                 try
                 {
+                    OrderEntity entity = new OrderEntity();
+                    entity.Order_id = tilebar_order.Text;
+                    entity.Prod_num = tileBar_code.Text;
+                    entity.Amount = int.Parse( tileBar_amount.Text);
+
+                    switch (tileBar_process.Text)
+                    {
+                        case "절단":
+                            entity.Process = "CUT001";
+                            break;
+                        case "절곡(노컷)":
+                            entity.Process = "BEND001";
+                            break;
+                        case "절곡(V컷)":
+                            entity.Process = "BEND002";
+                            break;
+                        case "용접/조립":
+                            entity.Process = "ASSY001";
+                            break;
+                        case "도장":
+                            entity.Process = "PAINT001";
+                            break;
+                    }
+
+                    
+                    entity.Worker = tileBar_worker.Text;
+                    entity.Product_type = "RM";
+                    entity.Remark = txt_remark.Text;
                     //실행
+                    business.Resource_In(entity);
+
                     Message_blue("자재가 입고되었습니다.");
                 }
                 catch (Exception ex)
@@ -322,11 +346,41 @@ namespace POP_TD3_001
             }
         }
 
+        //자재출고
         private void btnmaterial_Out_Click(object sender, EventArgs e)
         {
             if (Checkcode())
             {
+                OrderEntity entity = new OrderEntity();
+                entity.Order_id = tilebar_order.Text;
+                entity.Prod_num = tileBar_code.Text;
+                entity.Amount = int.Parse(tileBar_amount.Text);
 
+                switch (tileBar_process.Text)
+                {
+                    case "절단":
+                        entity.Process = "CUT001";
+                        break;
+                    case "절곡(노컷)":
+                        entity.Process = "BEND001";
+                        break;
+                    case "절곡(V컷)":
+                        entity.Process = "BEND002";
+                        break;
+                    case "용접/조립":
+                        entity.Process = "ASSY001";
+                        break;
+                    case "도장":
+                        entity.Process = "PAINT001";
+                        break;
+                }
+
+
+                entity.Worker = tileBar_worker.Text;
+                entity.Product_type = "RM";
+                entity.Remark = txt_remark.Text;
+                //실행
+                business.Resource_Out(entity);
                 //실행
                 Message_blue("자재가 출고되었습니다.");
 
@@ -350,12 +404,46 @@ namespace POP_TD3_001
         }
 
 
-
+        //제품출하
         private void btnproduct_out_Click(object sender, EventArgs e)
         {
             //실행
             try
             {
+
+
+                OrderEntity entity = new OrderEntity();
+                entity.Order_id = tilebar_order.Text;
+                entity.Prod_num = tileBar_code.Text;
+                entity.Amount = int.Parse(tileBar_amount.Text);
+
+                switch (tileBar_process.Text)
+                {
+                    case "절단":
+                        entity.Process = "CUT001";
+                        break;
+                    case "절곡(노컷)":
+                        entity.Process = "BEND001";
+                        break;
+                    case "절곡(V컷)":
+                        entity.Process = "BEND002";
+                        break;
+                    case "용접/조립":
+                        entity.Process = "ASSY001";
+                        break;
+                    case "도장":
+                        entity.Process = "PAINT001";
+                        break;
+                }
+
+
+                entity.Worker = tileBar_worker.Text;
+                entity.Product_type = "FG";
+                entity.Remark = txt_remark.Text;
+                //실행
+                business.Product_Out_I10(entity);
+
+
                 Message_blue("제품출하가 완료되었습니다.");
 
             }
@@ -370,7 +458,38 @@ namespace POP_TD3_001
         {
             try
             {
+
+                OrderEntity entity = new OrderEntity();
+                entity.Order_id = tilebar_order.Text;
+                entity.Prod_num = tileBar_code.Text;
+                entity.Amount = int.Parse(tileBar_amount.Text);
+
+                switch (tileBar_process.Text)
+                {
+                    case "절단":
+                        entity.Process = "CUT001";
+                        break;
+                    case "절곡(노컷)":
+                        entity.Process = "BEND001";
+                        break;
+                    case "절곡(V컷)":
+                        entity.Process = "BEND002";
+                        break;
+                    case "용접/조립":
+                        entity.Process = "ASSY001";
+                        break;
+                    case "도장":
+                        entity.Process = "PAINT001";
+                        break;
+                }
+
+
+                entity.Worker = tileBar_worker.Text;
+                entity.Product_type = "FG";
+                entity.Remark = txt_remark.Text;
                 //실행
+                business.Work_Finish_I10(entity);
+                
                 Message_blue("작업완료 처리되었습니다.");
             }
             catch (Exception ex)
@@ -444,8 +563,9 @@ namespace POP_TD3_001
 
             }
         }
+
         #endregion
 
-
+      
     }
 }

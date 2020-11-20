@@ -23,9 +23,32 @@ namespace POP_TD3_001
             return pDataTable;
         }
 
-        public void Change_Connection()
+        public void Change_Connection(string machine_name)
         {
-            prov.Change_Connection();
+            prov.Change_Connection(machine_name);
+        }
+
+        public void Resource_In(OrderEntity v_entity)
+        {
+            prov.Resource_In(v_entity);
+        }
+
+        public void Resource_Out(OrderEntity entity)
+        {
+            prov.Resource_Out(entity);
+
+        }
+
+        public void Work_Finish_I10(OrderEntity entity)
+        {
+            prov.Work_Finish_I10(entity);
+
+        }
+
+        public void Product_Out_I10(OrderEntity entity)
+        {
+            prov.Product_Out_I10(entity);
+
         }
     }
 }

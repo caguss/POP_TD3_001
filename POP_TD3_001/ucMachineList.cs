@@ -64,9 +64,9 @@ namespace POP_TD3_001
 
         }
 
-        public void Change_conn()
+        public void Change_conn(string machine_name)
         {
-            business.Change_Connection();
+            business.Change_Connection(machine_name);
 
             //switch (machine_conn.Text) // 연결상태
             //{
