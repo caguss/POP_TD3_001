@@ -156,6 +156,7 @@ namespace POP_TD3_001
                 {
                     try
                     {
+                        //설비와 통신
                         machineList[i].machine_Refresh();
                     }
                     catch (Exception ex)
@@ -195,7 +196,7 @@ namespace POP_TD3_001
         private void popupok_Click(object sender, EventArgs e)
         {
 
-            if (selecteditem.Tag.ToString() == "수    량")
+            if (selecteditem.Tag.ToString() == "수     량")
             {
                 if (popup_edit.Text != "")
                 {
@@ -566,6 +567,6 @@ namespace POP_TD3_001
 
         #endregion
 
-      
+
     }
 }
